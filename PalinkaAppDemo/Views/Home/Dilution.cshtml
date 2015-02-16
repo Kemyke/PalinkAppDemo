@@ -1,0 +1,56 @@
+﻿@using PalinkaAppDemo.Models
+@model DilutionViewModel
+@{
+    ViewBag.Title = "Higítás";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<div>
+    <section id="loginForm">
+        @using (Html.BeginForm("ComputeDilution", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Hogyan higítsd a pálinkát?</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.OriginalAmount, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.OriginalAmount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OriginalAmount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.OriginalConcentration, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.OriginalConcentration, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OriginalConcentration, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.RequiredConcentration, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.RequiredConcentration, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RequiredConcentration, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Számol" class="btn btn-default" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.AdditionalAmount, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.AdditionalAmount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.AdditionalAmount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+    </section>
+</div>
